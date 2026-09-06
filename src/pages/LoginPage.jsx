@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Shield, FileText, CheckCircle, Clock, User, Eye, EyeOff, Loader2, Lock } from 'lucide-react';
+import { useNavigate, Link } from 'react-router-dom';
+import { Scale, Shield, Eye, EyeOff, Loader2, Lock, ArrowLeft } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { Button } from '../components/ui/Button';
 import { Input } from '../components/ui/Input';
+import mountainBg from '../assets/mountain-bg.jpg';
 
 export default function LoginPage() {
   const [officerName, setOfficerName] = useState('');
@@ -55,193 +56,179 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col md:flex-row bg-slate-50">
-      {/* Left side - Branding & Hero */}
-      <div className="md:w-1/2 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 p-8 lg:p-16 flex flex-col justify-between text-white">
-        <div>
-          <div className="flex items-center gap-3 mb-12">
-            <div className="bg-blue-600 p-2 rounded-lg">
-              <Shield className="w-8 h-8 text-white" />
-            </div>
-            <h1 className="text-3xl font-bold tracking-tight">PackCheck AI</h1>
+    <div className="min-h-screen relative overflow-hidden bg-[#212529] text-[#212529] flex flex-col justify-between p-4 sm:p-6 lg:p-8 selection:bg-[#8338EC] selection:text-white">
+      {/* Background Mountain Layer & Atmosphere */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat pointer-events-none opacity-30"
+        style={{ backgroundImage: `url(${mountainBg})` }}
+      />
+      <div className="absolute inset-0 bg-[#212529]/75 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#212529]/90 via-[#212529]/70 to-[#212529] pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#8338EC]/20 rounded-full blur-[130px] pointer-events-none" />
+      <div className="absolute -bottom-24 right-1/4 w-[450px] h-[250px] bg-[#FB5607]/10 rounded-full blur-[100px] pointer-events-none" />
+
+      {/* Top Left Brand */}
+      <header className="relative z-10 w-full max-w-7xl mx-auto">
+        <Link 
+          to="/" 
+          className="inline-flex items-center gap-2.5 text-white hover:opacity-90 transition-opacity group"
+        >
+          <div className="w-9 h-9 rounded-lg bg-[#8338EC] text-white flex items-center justify-center shadow-xs">
+            <Scale className="w-5 h-5" />
           </div>
-          
-          <h2 className="text-4xl lg:text-5xl font-extrabold mb-6 leading-tight">
-            Legal Metrology <br />
-            <span className="text-blue-400">Compliance Platform</span>
-          </h2>
-          
-          <p className="text-lg text-slate-300 mb-12 max-w-md leading-relaxed">
-            Automating package inspections with computer vision. Ensure accurate declarations and compliance with the Legal Metrology (Packaged Commodities) Rules, 2011.
-          </p>
-
-          <div className="space-y-6">
-            <div className="flex items-start gap-4">
-              <div className="bg-blue-500/20 p-2 rounded-full mt-1">
-                <FileText className="w-5 h-5 text-blue-300" />
-              </div>
-              <div>
-                <h3 className="font-semibold text-lg">AI-Powered OCR</h3>
-                <p className="text-slate-400">Instantly extract and verify mandatory declarations from package images.</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-4">
-              <div className="bg-blue-500/20 p-2 rounded-full mt-1">
-                <CheckCircle className="w-5 h-5 text-blue-300" />
-              </div>
-              <div>
-                <h3 className="font-semibold text-lg">Real-time Compliance</h3>
-                <p className="text-slate-400">Automated checks against standard quantities and MRP regulations.</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-4">
-              <div className="bg-blue-500/20 p-2 rounded-full mt-1">
-                <Clock className="w-5 h-5 text-blue-300" />
-              </div>
-              <div>
-                <h3 className="font-semibold text-lg">Official Reports</h3>
-                <p className="text-slate-400">Generate and export legally sound inspection reports instantly.</p>
-              </div>
-            </div>
+          <div className="flex flex-col">
+            <span className="font-extrabold text-sm sm:text-base tracking-wider uppercase text-white font-sans">
+              Legal Metrology
+            </span>
+            <span className="text-[10px] text-slate-300 font-medium tracking-tight -mt-0.5">
+              PackCheck AI &bull; Enforcement Portal
+            </span>
           </div>
-        </div>
+        </Link>
+      </header>
 
-        <div className="mt-16 pt-8 border-t border-slate-700/50">
-          <p className="text-sm text-slate-400 font-medium">
-            Ministry of Consumer Affairs, Food and Public Distribution
-          </p>
-          <p className="text-xs text-slate-500 mt-1">Government of India</p>
-        </div>
-      </div>
-
-      {/* Right side - Login Form */}
-      <div className="md:w-1/2 flex items-center justify-center p-8 lg:p-16">
-        <div className="w-full max-w-md space-y-8">
-          <div className="text-center md:text-left">
-            <h2 className="text-3xl font-bold text-slate-900">Officer Login</h2>
-            <p className="text-slate-500 mt-2">Sign in to access the compliance dashboard.</p>
+      {/* Centered Login Content */}
+      <main className="relative z-10 flex-1 flex flex-col items-center justify-center my-6 sm:my-10">
+        <div className="w-full max-w-md space-y-6">
+          {/* Heading and Subheading */}
+          <div className="text-center space-y-1.5">
+            <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white font-sans uppercase drop-shadow-sm">
+              Officer Login
+            </h1>
+            <p className="text-sm text-slate-300 font-normal">
+              Sign in to access your inspection dashboard
+            </p>
           </div>
 
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 text-xs text-blue-800 flex items-start justify-between gap-2.5 mt-4">
-            <div className="flex items-start gap-2.5">
-              <Shield className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
-              <div>
-                <p className="font-semibold text-blue-900">Custom Officer Access</p>
-                <p className="text-blue-700 mt-0.5">Enter any name (e.g. your own name) to sign in and begin inspections.</p>
-              </div>
+          {/* Quick Demo Assist Banner */}
+          <div className="bg-white/95 backdrop-blur-xs border border-slate-300 rounded-lg p-2.5 text-xs text-[#212529] flex items-center justify-between gap-2 shadow-xs">
+            <div className="flex items-center gap-2">
+              <Shield className="w-4 h-4 text-[#8338EC] shrink-0" />
+              <span>Enter any officer name or load sample credentials:</span>
             </div>
             <button 
               type="button" 
               onClick={handleQuickDemo}
-              className="text-xs text-blue-700 underline hover:text-blue-900 shrink-0 font-medium cursor-pointer"
+              className="font-semibold text-[#8338EC] hover:text-[#7126dc] underline shrink-0 cursor-pointer text-xs"
             >
               Demo Fill
             </button>
           </div>
 
-          <form onSubmit={handleLogin} className="space-y-6 mt-6">
-            {error && (
-              <div className="bg-red-50 text-red-600 p-3 rounded-lg text-sm font-medium border border-red-100 flex items-center gap-2">
-                <Shield className="w-4 h-4" />
-                {error}
-              </div>
-            )}
+          {/* Login Form Container - Clean light/off-white foreground surface */}
+          <div className="bg-white rounded-xl border border-slate-300 shadow-xl p-6 sm:p-8">
+            <form onSubmit={handleLogin} className="space-y-5">
+              {error && (
+                <div className="bg-red-50 text-red-700 p-3 rounded-lg text-xs sm:text-sm font-medium border border-red-200 flex items-center gap-2">
+                  <Shield className="w-4 h-4 text-red-600 shrink-0" />
+                  <span>{error}</span>
+                </div>
+              )}
 
-            <div className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1">
-                  Officer Name or Username
+              {/* Officer ID / Username */}
+              <div className="space-y-1.5">
+                <label className="block text-xs font-semibold text-[#212529] uppercase tracking-wider">
+                  Officer ID / Username
                 </label>
                 <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <User className="h-5 w-5 text-slate-400" />
-                  </div>
                   <Input
                     type="text"
                     value={officerName}
                     onChange={(e) => setOfficerName(e.target.value)}
-                    className="pl-10"
-                    placeholder="Enter your name (e.g. Raman Yadav)"
+                    className="w-full px-3.5 py-2.5 text-sm rounded-lg border-slate-300 focus:border-[#8338EC] focus:ring-1 focus:ring-[#8338EC]"
+                    placeholder="e.g. Officer Raman Yadav / OFF-2026"
                     autoFocus
                   />
                 </div>
               </div>
 
-              <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1">
+              {/* Password */}
+              <div className="space-y-1.5">
+                <label className="block text-xs font-semibold text-[#212529] uppercase tracking-wider">
                   Password
                 </label>
                 <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <Lock className="h-5 w-5 text-slate-400" />
-                  </div>
                   <Input
                     type={showPassword ? 'text' : 'password'}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="pl-10 pr-10"
-                    placeholder="Enter any password"
+                    className="w-full px-3.5 py-2.5 pr-10 text-sm rounded-lg border-slate-300 focus:border-[#8338EC] focus:ring-1 focus:ring-[#8338EC]"
+                    placeholder="Enter your password"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                    className="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600 cursor-pointer"
+                    aria-label={showPassword ? "Hide password" : "Show password"}
                   >
                     {showPassword ? (
-                      <EyeOff className="h-5 w-5 text-slate-400 hover:text-slate-600" />
+                      <EyeOff className="h-4 w-4" />
                     ) : (
-                      <Eye className="h-5 w-5 text-slate-400 hover:text-slate-600" />
+                      <Eye className="h-4 w-4" />
                     )}
                   </button>
                 </div>
               </div>
-            </div>
 
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <input
-                  id="remember-me"
-                  name="remember-me"
-                  type="checkbox"
-                  className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-slate-300 rounded"
-                />
-                <label htmlFor="remember-me" className="ml-2 block text-sm text-slate-700">
-                  Remember me
+              {/* Remember me & Forgot password */}
+              <div className="flex items-center justify-between text-xs pt-1">
+                <label className="flex items-center gap-2 text-slate-600 cursor-pointer select-none">
+                  <input
+                    type="checkbox"
+                    id="remember-me"
+                    name="remember-me"
+                    className="h-4 w-4 text-[#8338EC] focus:ring-[#8338EC] border-slate-300 rounded cursor-pointer"
+                  />
+                  <span>Remember me</span>
                 </label>
-              </div>
 
-              <div className="text-sm">
-                <a href="#" className="font-medium text-blue-600 hover:text-blue-500">
-                  Forgot password?
+                <a 
+                  href="#forgot" 
+                  onClick={(e) => { e.preventDefault(); alert("For demo/prototype evaluation, simply enter any username and password to log in."); }}
+                  className="font-medium text-[#8338EC] hover:text-[#7126dc] hover:underline"
+                >
+                  Forgot Password?
                 </a>
               </div>
-            </div>
 
-            <Button 
-              type="submit" 
-              className="w-full text-lg py-6"
-              disabled={isLoading}
-            >
-              {isLoading ? (
-                <>
-                  <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-                  Authenticating...
-                </>
-              ) : (
-                'Secure Login'
-              )}
-            </Button>
-          </form>
+              {/* Prominent Login Button with Orange Brand Accent (#FB5607) */}
+              <Button 
+                type="submit" 
+                className="w-full py-2.5 px-4 text-sm font-semibold uppercase tracking-wider bg-[#FB5607] hover:bg-[#e04b04] active:bg-[#c54002] text-white rounded-lg shadow-md shadow-[#FB5607]/25 transition-colors cursor-pointer border-none"
+                disabled={isLoading}
+              >
+                {isLoading ? (
+                  <span className="flex items-center justify-center gap-2">
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                    Authenticating...
+                  </span>
+                ) : (
+                  'Login'
+                )}
+              </Button>
+            </form>
+          </div>
 
-          <div className="mt-12 text-center bg-slate-100 p-4 rounded-lg">
-            <p className="text-xs text-slate-500 font-medium">
-              <Shield className="w-4 h-4 inline-block mr-1 text-slate-400" />
-              This portal is for authorized Legal Metrology Enforcement Officers only.
+          {/* Security / Authorization Message */}
+          <div className="text-center">
+            <p className="text-xs text-slate-300 font-medium leading-relaxed drop-shadow-xs">
+              Authorized access for Legal Metrology <br className="hidden sm:inline" />
+              Inspecting Officers
             </p>
           </div>
         </div>
-      </div>
+      </main>
+
+      {/* Bottom Left Back to Home */}
+      <footer className="relative z-10 w-full max-w-7xl mx-auto pt-2">
+        <Link 
+          to="/" 
+          className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-300 hover:text-white transition-colors"
+        >
+          <ArrowLeft className="w-3.5 h-3.5" />
+          <span>Back to Home</span>
+        </Link>
+      </footer>
     </div>
   );
 }
-

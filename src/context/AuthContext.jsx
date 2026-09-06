@@ -68,13 +68,16 @@ export function AuthProvider({ children }) {
     });
   };
 
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
+
   const logout = () => {
+    setIsLoggingOut(true);
     localStorage.setItem('packcheck_logged_out', 'true');
     setUser(null);
   };
 
   return (
-    <AuthContext.Provider value={{ user, isAuthenticated: !!user, login, logout, updateUser }}>
+    <AuthContext.Provider value={{ user, isAuthenticated: !!user, isLoggingOut, setIsLoggingOut, login, logout, updateUser }}>
       {children}
     </AuthContext.Provider>
   );

@@ -124,7 +124,7 @@ export default function RulesPage() {
   });
 
   return (
-    <div className="max-w-7xl mx-auto space-y-6 pb-12">
+    <div className="p-4 lg:p-6 max-w-7xl mx-auto space-y-6 pb-12">
       <div className="flex flex-col gap-2">
         <h1 className="text-2xl font-bold text-gray-900">Rule Engine - Legal Metrology Reference</h1>
         <div className="bg-blue-50 text-blue-800 text-sm p-3 rounded-lg flex items-start gap-2 border border-blue-100">

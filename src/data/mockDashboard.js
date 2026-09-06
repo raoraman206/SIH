@@ -54,11 +54,47 @@ export const recentActivity = [
   { id: 'act-5', type: 'INSPECTION_COMPLETED', user: 'Priya Desai', product: 'Choco Delight Biscuits', status: 'REVIEW_REQUIRED', time: '1 day ago' }
 ];
 
+export const initialNotifications = [
+  {
+    id: 'notif-001',
+    title: 'New Inspection Assigned',
+    message: 'A new priority inspection (INS-2026-0845) has been assigned to your station in Delhi NCR.',
+    time: '5m ago',
+    read: false,
+    type: 'inspection'
+  },
+  {
+    id: 'notif-002',
+    title: 'Violation Detected',
+    message: 'Non-compliance (Rule 6(1)(b) MRP) was flagged in inspection INS-2026-0842.',
+    time: '25m ago',
+    read: false,
+    type: 'violation'
+  },
+  {
+    id: 'notif-003',
+    title: 'Inspection Completed',
+    message: 'Official report for inspection INS-2026-0841 was completed successfully.',
+    time: '2h ago',
+    read: true,
+    type: 'completed'
+  },
+  {
+    id: 'notif-004',
+    title: 'System Update',
+    message: 'New features and updated Legal Metrology rules have been added to PackCheck AI.',
+    time: '1d ago',
+    read: true,
+    type: 'system'
+  }
+];
+
 export default {
   monthlyData,
   statusData,
   weeklyTrend,
   violationCategories,
   officerStats,
-  recentActivity
+  recentActivity,
+  initialNotifications
 };

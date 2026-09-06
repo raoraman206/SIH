@@ -85,12 +85,10 @@ export default function SettingsPage() {
   ];
 
   return (
-    <div className="max-w-5xl mx-auto pb-12">
-      <div className="flex justify-between items-end mb-6">
-        <div>
-          <h1 className="text-2xl font-bold text-gray-900">Settings</h1>
-          <p className="text-gray-500 text-sm mt-1">Manage your account preferences and system configuration.</p>
-        </div>
+    <div className="p-4 lg:p-6 max-w-7xl mx-auto space-y-6 pb-12">
+      <div>
+        <h1 className="text-2xl font-bold text-gray-900">Settings</h1>
+        <p className="text-gray-500 text-sm mt-1">Manage your account preferences and system configuration.</p>
       </div>
 
       <div className="flex flex-col md:flex-row gap-8">
@@ -167,7 +165,7 @@ export default function SettingsPage() {
                   </div>
                 </div>
                 <div className="pt-4 border-t border-gray-100 flex justify-end">
-                  <Button onClick={handleSave}>Save Profile</Button>
+                  <Button variant="brand" onClick={handleSave}>Save Profile</Button>
                 </div>
               </CardContent>
             </Card>
@@ -211,7 +209,7 @@ export default function SettingsPage() {
                   </div>
                 </div>
                 <div className="pt-4 flex justify-end">
-                  <Button onClick={handleSave}>Save Preferences</Button>
+                  <Button variant="brand" onClick={handleSave}>Save Preferences</Button>
                 </div>
               </CardContent>
             </Card>
@@ -290,7 +288,7 @@ export default function SettingsPage() {
                 </div>
 
                 <div className="pt-4 border-t border-gray-100 flex justify-end">
-                  <Button onClick={handleSave}>Save Display Settings</Button>
+                  <Button variant="brand" onClick={handleSave}>Save Display Settings</Button>
                 </div>
               </CardContent>
             </Card>

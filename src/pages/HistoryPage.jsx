@@ -111,7 +111,7 @@ export default function HistoryPage() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto space-y-6">
+    <div className="p-4 lg:p-6 max-w-7xl mx-auto space-y-6">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">Inspection History</h1>
@@ -127,19 +127,26 @@ export default function HistoryPage() {
       </div>
 
       <Card>
-        <CardContent className="p-4 space-y-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
-            <div className="lg:col-span-2">
-              <Input 
-                placeholder="Search by ID, product, manufacturer..." 
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                icon={<Search className="w-4 h-4" />}
-              />
+        <CardContent className="p-4">
+          <div className="flex flex-col lg:flex-row items-stretch lg:items-center gap-3">
+            {/* Search */}
+            <div className="flex-1 min-w-[200px]">
+              <div className="relative">
+                <input 
+                  type="text"
+                  placeholder="Search by ID, product, manufacturer..." 
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  className="w-full h-10 rounded-lg border border-slate-300 bg-white pl-9 pr-3 text-sm text-slate-900 placeholder-slate-400 transition-colors focus:outline-none focus:ring-2 focus:ring-[#8338EC] focus:border-transparent hover:border-slate-400"
+                />
+                <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+              </div>
             </div>
-            <div>
+
+            {/* Status Filter */}
+            <div className="w-full lg:w-36 shrink-0">
               <select 
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary-500 outline-none"
+                className="w-full h-10 border border-slate-300 bg-white rounded-lg px-3 text-sm text-slate-700 focus:ring-2 focus:ring-[#8338EC] focus:border-transparent outline-none hover:border-slate-400 cursor-pointer"
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
               >
@@ -149,9 +156,11 @@ export default function HistoryPage() {
                 <option value="Review Required">Review Required</option>
               </select>
             </div>
-            <div>
+
+            {/* Score Filter */}
+            <div className="w-full lg:w-32 shrink-0">
               <select 
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary-500 outline-none"
+                className="w-full h-10 border border-slate-300 bg-white rounded-lg px-3 text-sm text-slate-700 focus:ring-2 focus:ring-[#8338EC] focus:border-transparent outline-none hover:border-slate-400 cursor-pointer"
                 value={scoreFilter}
                 onChange={(e) => setScoreFilter(e.target.value)}
               >
@@ -161,27 +170,44 @@ export default function HistoryPage() {
                 <option value="<75">&lt; 75</option>
               </select>
             </div>
-            <div className="flex gap-2">
-              <Input 
+
+            {/* From Date */}
+            <label className="w-full lg:w-[205px] shrink-0 flex items-center h-10 rounded-lg border border-slate-300 bg-white px-2.5 focus-within:ring-2 focus-within:ring-[#8338EC] focus-within:border-transparent hover:border-slate-400 cursor-pointer">
+              <span className="text-xs font-medium text-slate-500 mr-1.5 shrink-0 select-none">From Date</span>
+              <input 
                 type="date"
+                title="From Date"
+                aria-label="From Date"
                 value={dateFrom}
                 onChange={(e) => setDateFrom(e.target.value)}
-                className="w-full"
+                className="w-full text-xs text-slate-700 bg-transparent focus:outline-none cursor-pointer [&::-webkit-calendar-picker-indicator]:cursor-pointer"
               />
-              <Input 
+            </label>
+
+            {/* To Date */}
+            <label className="w-full lg:w-[205px] shrink-0 flex items-center h-10 rounded-lg border border-slate-300 bg-white px-2.5 focus-within:ring-2 focus-within:ring-[#8338EC] focus-within:border-transparent hover:border-slate-400 cursor-pointer">
+              <span className="text-xs font-medium text-slate-500 mr-1.5 shrink-0 select-none">To Date</span>
+              <input 
                 type="date"
+                title="To Date"
+                aria-label="To Date"
                 value={dateTo}
                 onChange={(e) => setDateTo(e.target.value)}
-                className="w-full"
+                className="w-full text-xs text-slate-700 bg-transparent focus:outline-none cursor-pointer [&::-webkit-calendar-picker-indicator]:cursor-pointer"
               />
+            </label>
+
+            {/* Clear Filters Button */}
+            <div className="shrink-0">
+              <Button 
+                variant="outline" 
+                onClick={clearFilters}
+                className="w-full lg:w-auto h-10 px-3 text-sm whitespace-nowrap"
+              >
+                <Filter className="w-4 h-4 mr-1.5" />
+                Clear Filters
+              </Button>
             </div>
-          </div>
-          
-          <div className="flex justify-end">
-            <Button variant="outline" size="sm" onClick={clearFilters}>
-              <Filter className="w-4 h-4 mr-2" />
-              Clear Filters
-            </Button>
           </div>
         </CardContent>
       </Card>
@@ -253,7 +279,7 @@ export default function HistoryPage() {
                         description="You have not conducted any packaging inspections yet. Start your first inspection to analyze compliance."
                         action={
                           <Link to="/inspection/new">
-                            <Button>Start New Inspection</Button>
+                            <Button variant="brand">Start New Inspection</Button>
                           </Link>
                         }
                       />

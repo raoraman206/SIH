@@ -82,7 +82,7 @@ export default function DashboardPage() {
           <h1 className="text-2xl font-bold text-slate-900">{greeting}, {user?.name || 'Officer'}</h1>
           <p className="text-slate-500 mt-1 text-sm">{currentDate} &nbsp;|&nbsp; Badge: {user?.badge || 'LMO-DL-2847'}</p>
         </div>
-        <Button onClick={() => navigate('/inspection/new')} size="lg" icon={Plus}>
+        <Button variant="brand" onClick={() => navigate('/inspection/new')} size="lg" icon={Plus}>
           Start New Inspection
         </Button>
       </div>
@@ -142,7 +142,7 @@ export default function DashboardPage() {
               Your compliance trend, status distribution, and violation analytics will automatically populate here as you perform package inspections.
             </p>
             <div className="pt-2">
-              <Button size="sm" onClick={() => navigate('/inspection/new')} icon={Plus}>
+              <Button variant="brand" size="sm" onClick={() => navigate('/inspection/new')} icon={Plus}>
                 Perform First Inspection
               </Button>
             </div>
@@ -223,7 +223,7 @@ export default function DashboardPage() {
                 title="No Inspections Yet" 
                 description="You haven't conducted any packaging compliance inspections yet."
                 action={
-                  <Button size="sm" onClick={() => navigate('/inspection/new')} icon={Plus}>
+                  <Button variant="brand" size="sm" onClick={() => navigate('/inspection/new')} icon={Plus}>
                     Start First Inspection
                   </Button>
                 }

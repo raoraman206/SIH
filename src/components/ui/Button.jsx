@@ -1,11 +1,12 @@
 import { classNames } from '../../utils';
 
 const variants = {
-  primary: 'bg-blue-600 text-white hover:bg-blue-700 active:bg-blue-800 shadow-sm',
-  secondary: 'bg-white text-slate-700 border border-slate-300 hover:bg-slate-50 active:bg-slate-100 shadow-sm',
-  outline: 'bg-white text-slate-700 border border-slate-300 hover:bg-slate-50 active:bg-slate-100 shadow-sm',
+  primary: 'bg-[#FB5607] text-white hover:bg-[#e04b04] active:bg-[#c54002] shadow-sm',
+  brand: 'bg-[#8338EC] text-white hover:bg-[#7126dc] active:bg-[#5d19bf] shadow-sm',
+  secondary: 'bg-white text-[#212529] border border-slate-300 hover:bg-[#E9ECEF] active:bg-slate-200 shadow-sm',
+  outline: 'bg-transparent text-[#212529] border border-slate-300 hover:bg-[#E9ECEF] active:bg-slate-200 shadow-sm',
   danger: 'bg-red-600 text-white hover:bg-red-700 active:bg-red-800 shadow-sm',
-  ghost: 'text-slate-600 hover:bg-slate-100 active:bg-slate-200',
+  ghost: 'text-[#212529] hover:bg-[#E9ECEF] active:bg-slate-200',
   success: 'bg-green-600 text-white hover:bg-green-700 active:bg-green-800 shadow-sm',
 };
 const sizes = {
@@ -22,7 +23,7 @@ export function Button({ children, variant = 'primary', size = 'md', className =
       disabled={disabled || loading}
       onClick={onClick}
       className={classNames(
-        'inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed',
+        'inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-[#8338EC] focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed',
         variants[variant],
         sizes[size],
         className

@@ -195,7 +195,7 @@ export default function ResultPage() {
                 className={`
                   whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm flex items-center gap-2
                   ${isActive 
-                    ? 'border-blue-500 text-blue-600' 
+                    ? 'border-[#8338EC] text-[#8338EC]' 
                     : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
                   }
                 `}
